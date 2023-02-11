@@ -49,6 +49,7 @@ body {
   
   .title {
     font-size: 15px;
+    font-weight: bold;
 
   }
   
@@ -59,9 +60,7 @@ body {
     margin-bottom: 20px;
   }
   
-  input[type="text"],
-  input[type="email"],
-  input[type="password"] {
+  .formWrapper input {
     width: 100%;
     padding: 10px;
     margin-bottom: 20px;
@@ -74,7 +73,7 @@ body {
     margin-bottom: 20px;
   }
   
-  button .firstbut {
+ .formWrapper button {
     background-color: blue;
     color: white;
     padding: 10px 20px;
@@ -83,7 +82,7 @@ body {
     font-size: 16px;
     cursor: pointer;
   }
-  .firstbut:hover {
+  .formWrapper button:hover {
     background-color: rgb(47, 47, 192);
   }
  .formContainer label{
@@ -93,7 +92,7 @@ body {
     font-size: 12px;
     cursor: pointer;
   }
-  .signim img{
+  .formWrapper img{
     width: 32px;
   }
   
@@ -176,7 +175,7 @@ body {
   color: white;
   outline: none;
 }
-input[type="text"]::placeholder { 
+.searchform input::placeholder { 
   color: lightgray;
 }
 .userChat{
