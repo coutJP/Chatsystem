@@ -26,7 +26,7 @@ const Login = () => {
         setErrorMessage("Incorrect password.");
       } else if(err.message === "Firebase: Error (auth/user-not-found)."){
         setErr(true);
-        setErrorMessage("This user doesn't exist:( \t Please sign up:)"); 
+        setErrorMessage("This user doesn't exist, Please sign up 😄👇"); 
       }else{
         setErr(true);
         setErrorMessage(err.message);

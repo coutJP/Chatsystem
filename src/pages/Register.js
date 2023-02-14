@@ -11,6 +11,7 @@ import { useNavigate ,Link} from 'react-router-dom';
 const Register = () => {
 
   const [err,setErr]=useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
   const navigate=useNavigate();
 
   const handleSubmit=async (e)=>{
@@ -20,6 +21,16 @@ const Register = () => {
     const password=e.target[2].value;
     const file=e.target[3].files[0];
 
+    if (password.length < 8) {
+      setErr(true);
+      setErrorMessage("Password must be at least 8 characters long.");
+    } else if (!/[A-Z]/.test(password)) {
+      setErr(true);
+      setErrorMessage("Password must contain at least one uppercase letter.");
+    } else if (!/[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]/.test(password)) {
+      setErr(true);
+      setErrorMessage("Password must contain at least one symbol (!@#$%^&*()_+-=[]{};':\"\\|,.<>/?).");
+    } else{
     try{  
       //create user  
       const res=await createUserWithEmailAndPassword(auth, email, password);
@@ -49,10 +60,13 @@ const Register = () => {
       });
     }
 );
-}catch(err){
+
+  }catch(err){
   setErr(true);
+  setErrorMessage("This email already registered, Please Log in 👇");
   console.log("thiserr")
 }
+    }
   };
  
 
@@ -73,8 +87,9 @@ const Register = () => {
 
             </label>
             <button className='firstbut'>Sign up</button>
-            {err && <span>Something went error</span>}
-        </form>
+            {err && (
+        <p>{errorMessage}</p>
+      )}        </form>
         <p>You do have an account? <Link to='/login'>Login</Link></p>
       </div>
     </div>
