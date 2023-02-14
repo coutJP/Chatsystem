@@ -72,10 +72,18 @@ const Input = () => {
     setText("")
     setImg(null)
   };
+
+  const handleKeyPress = (event) => {
+    if (event.key === 'Enter') {
+      handleSend();
+    }
+  };
+
   return (
     <div className='input'>
       <input type="text" placeholder='Type Something...'  
       onChange={e=>setText(e.target.value)}
+      onKeyPress={handleKeyPress}
       value={text} // to delet the input text
       />
       <div className='send'>
